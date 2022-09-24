@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Sainik</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="welcome">Welcome</string>
+    <string name="register_now">Register Now</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="enter_your_email">Enter your email</string>
+</resources>
