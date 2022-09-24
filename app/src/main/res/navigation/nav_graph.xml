@@ -7,34 +7,62 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.sainik.LoginFragment"
+        android:name="com.example.sainik.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/registrationFragment"
-        android:name="com.example.sainik.RegistrationFragment"
+        android:name="com.example.sainik.fragments.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" />
     <fragment
         android:id="@+id/eventsFragment"
-        android:name="com.example.sainik.EventsFragment"
+        android:name="com.example.sainik.fragments.EventsFragment"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events" />
+        tools:layout="@layout/fragment_events" >
+        <action
+            android:id="@+id/action_eventsFragment_to_organizeEventFragment"
+            app:destination="@id/organizeEventFragment" />
+        <action
+            android:id="@+id/action_eventsFragment_to_myEventsFragment"
+            app:destination="@id/myEventsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/organizeEventFragment"
-        android:name="com.example.sainik.OrganizeEventFragment"
+        android:name="com.example.sainik.fragments.OrganizeEventFragment"
         android:label="fragment_organize_event"
-        tools:layout="@layout/fragment_organize_event" />
+        tools:layout="@layout/fragment_organize_event" >
+        <action
+            android:id="@+id/action_organizeEventFragment_to_eventAnalysisFragment"
+            app:destination="@id/eventAnalysisFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myEventsFragment"
-        android:name="com.example.sainik.MyEventsFragment"
+        android:name="com.example.sainik.fragments.MyEventsFragment"
         android:label="fragment_my_events"
         tools:layout="@layout/fragment_my_events" />
     <fragment
         android:id="@+id/eventAnalysisFragment"
-        android:name="com.example.sainik.EventAnalysisFragment"
+        android:name="com.example.sainik.fragments.EventAnalysisFragment"
         android:label="fragment_event_analysis"
-        tools:layout="@layout/fragment_event_analysis" />
+        tools:layout="@layout/fragment_event_analysis" >
+        <action
+            android:id="@+id/action_eventAnalysisFragment_to_organizeEventFragment"
+            app:destination="@id/organizeEventFragment" />
+        <action
+            android:id="@+id/action_eventAnalysisFragment_to_myEventsFragment"
+            app:destination="@id/myEventsFragment"
+            app:popUpTo="@id/eventsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventStatisticsFragment"
         android:name="com.example.sainik.EventStatisticsFragment"

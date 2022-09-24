@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".fragments.LoginFragment">
 
 
     <TextView
@@ -59,6 +59,7 @@
         android:layout_marginTop="10dp"
         android:clickable="true"
         android:text="@string/register_now"
+        android:textColor="#B94E1D"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/password_et"

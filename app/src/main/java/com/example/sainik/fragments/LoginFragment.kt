@@ -1,15 +1,13 @@
-package com.example.sainik
+package com.example.sainik.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.example.sainik.R
 import com.example.sainik.databinding.FragmentLoginBinding
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 
 class LoginFragment : Fragment() {
@@ -22,6 +20,13 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         view = FragmentLoginBinding.inflate(inflater,container,false)
 
+        view.registerTv.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+        }
+
+        view.loginBt.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_eventsFragment)
+        }
 
         return view.root
     }
