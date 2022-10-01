@@ -23,7 +23,11 @@
         android:id="@+id/registrationFragment"
         android:name="com.example.sainik.fragments.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventsFragment"
         android:name="com.example.sainik.fragments.EventsFragment"
