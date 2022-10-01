@@ -48,7 +48,7 @@ class RegistrationFragment : Fragment() {
             )
             mUserViewModel.insertData(newData)
             Toast.makeText(requireContext(),"Successfully added!", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_registrationFragment_to_loginFragment)
+            findNavController().navigate(R.id.action_registrationFragment_to_eventsFragment)
         }else{
             Toast.makeText(requireContext(),"Please fill all fields.", Toast.LENGTH_SHORT).show()
         }

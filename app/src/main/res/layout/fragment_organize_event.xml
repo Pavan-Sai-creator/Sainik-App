@@ -60,14 +60,42 @@
         android:background="@android:color/transparent"
         android:ems="10"
         android:hint="Capacity"
-        android:inputType="number"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location_et" />
 
     <EditText
-        android:id="@+id/event_description_et"
+        android:id="@+id/organizer_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
 
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="Enter your name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/event_capacity_et" />
+    <EditText
+        android:id="@+id/organizer_number"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+
+        android:background="@android:color/transparent"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/organizer_name" />
+
+    <EditText
+        android:id="@+id/event_description_et"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -76,7 +104,7 @@
         android:gravity="top|start"
         android:hint="Description"
 
-        android:inputType="textMultiLine"
+        android:inputType="textPersonName"
         android:paddingStart="24dp"
         android:paddingTop="16dp"
         android:paddingEnd="24dp"
@@ -84,7 +112,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/event_capacity_et" />
+        app:layout_constraintTop_toBottomOf="@+id/organizer_number" />
 
     <Button
         android:id="@+id/create_event_btn"

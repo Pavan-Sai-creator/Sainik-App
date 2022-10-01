@@ -5,10 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [UserData::class], version = 6, exportSchema = false)
+@Database(entities = [UserData::class, EventData::class], version = 7, exportSchema = false)
 abstract class MyDatabase : RoomDatabase(){
 
     abstract fun userDao(): UserDao
+    abstract fun eventDao(): EventDao
 
     // companion object is like public static final class
     companion object{
