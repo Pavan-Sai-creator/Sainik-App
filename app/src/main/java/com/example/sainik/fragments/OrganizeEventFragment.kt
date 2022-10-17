@@ -25,10 +25,10 @@ class OrganizeEventFragment : Fragment() {
         view.createEventBtn.setOnClickListener {
             val mtitle = view.eventTitleEt.text.toString()
             val mlocation = view.locationEt.text.toString()
-            val mcapacity = view.eventCapacityEt.toString()
-            val mdescription = view.eventDescriptionEt.toString()
-            val morgname = view.organizerName.toString()
-            val morgnumber = view.organizerNumber.toString()
+            val mcapacity = view.eventCapacityEt.text.toString()
+            val mdescription = view.eventDescriptionEt.text.toString()
+            val morgname = view.organizerName.text.toString()
+            val morgnumber = view.organizerNumber.text.toString()
 
             val verified = verifyEventDataFromUser(mtitle,mlocation,mcapacity,mdescription,morgname,morgnumber)
             if(verified) {
