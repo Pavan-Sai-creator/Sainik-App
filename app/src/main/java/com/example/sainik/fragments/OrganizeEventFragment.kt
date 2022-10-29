@@ -8,18 +8,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.sainik.R
 import com.example.sainik.databinding.FragmentOrganizeEventBinding
 
 
 class OrganizeEventFragment : Fragment() {
 
+    private val args by navArgs<OrganizeEventFragmentArgs>()
+    val currentUserPhoneNumber by lazy {
+        args.currentUserPhoneNumber
+    }
+
     private lateinit var view: FragmentOrganizeEventBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+
         view = FragmentOrganizeEventBinding.inflate(inflater,container,false)
 
         view.createEventBtn.setOnClickListener {
@@ -30,14 +36,20 @@ class OrganizeEventFragment : Fragment() {
             val morgname = view.organizerName.text.toString()
             val morgnumber = view.organizerNumber.text.toString()
 
-            val verified = verifyEventDataFromUser(mtitle,mlocation,mcapacity,mdescription,morgname,morgnumber)
-            if(verified) {
-                Toast.makeText(context,mdescription,Toast.LENGTH_LONG).show()
-                val action = OrganizeEventFragmentDirections.actionOrganizeEventFragmentToEventAnalysisFragment(mtitle,mlocation,mcapacity,mdescription,morgname,morgnumber)
-                findNavController().navigate(action)
+            val phonNumberVerified = verifyPhoneNumber(morgnumber)
+            if(phonNumberVerified){
+                val verified = verifyEventDataFromUser(mtitle,mlocation,mcapacity,mdescription,morgname,morgnumber)
+                if(verified) {
+                    Toast.makeText(context,mdescription,Toast.LENGTH_LONG).show()
+                    val action = OrganizeEventFragmentDirections.actionOrganizeEventFragmentToEventAnalysisFragment(mtitle,mlocation,mcapacity,mdescription,morgname,morgnumber)
+                    findNavController().navigate(action)
+                }
+                else
+                    Toast.makeText(context,"Fill all details",Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(context,"Enter the number used to login",Toast.LENGTH_LONG).show()
             }
-            else
-                Toast.makeText(context,"Fill all details",Toast.LENGTH_LONG).show()
+
         }
 
         return view.root
@@ -47,6 +59,13 @@ class OrganizeEventFragment : Fragment() {
         return if( TextUtils.isEmpty(title) || TextUtils.isEmpty(location)||TextUtils.isEmpty(cap) || TextUtils.isEmpty(des)||TextUtils.isEmpty(orgname) || TextUtils.isEmpty(orgNum)){
             false
         } else !( title.isEmpty() || location.isEmpty() || cap.isEmpty() || des.isEmpty() ||  orgname.isEmpty() || orgNum.isEmpty())
+    }
+
+    fun verifyPhoneNumber(organizerNumber: String): Boolean{
+        if(organizerNumber==currentUserPhoneNumber){
+            return true
+        }
+        return false
     }
 
 

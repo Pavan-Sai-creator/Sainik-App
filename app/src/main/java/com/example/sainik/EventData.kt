@@ -13,5 +13,6 @@ data class EventData(
     var event_capacity: String,
     var event_description: String,
     var organiser_name: String,
-    var organiser_number: String
+    var organiser_number: String,
+    var number_of_participants: Int
 )

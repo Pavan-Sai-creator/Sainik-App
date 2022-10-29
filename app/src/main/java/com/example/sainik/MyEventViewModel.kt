@@ -4,20 +4,19 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.sainik.fragments.EventsFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EventViewModel(application: Application): AndroidViewModel(application) {
+class MyEventViewModel(application: Application, currUserNumber: String): AndroidViewModel(application) {
     private val eventDao = MyDatabase.getDatabase(application).eventDao()
     private val userDao = MyDatabase.getDatabase(application).userDao()
     private val repository: Repository
 
-    val getAllEventData: LiveData<List<EventData>>
+    val getMyEventData: LiveData<List<EventData>>
 
     init {
         repository = Repository(userDao,eventDao)
-        getAllEventData = repository.getAllEventData
+        getMyEventData = repository.getMyEventsData(currUserNumber)
     }
 
     fun insertData(eventData: EventData){

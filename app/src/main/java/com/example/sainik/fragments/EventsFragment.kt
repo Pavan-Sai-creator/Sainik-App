@@ -1,29 +1,45 @@
 package com.example.sainik.fragments
 
+import android.app.Application
 import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.sainik.EventViewModel
+import com.example.sainik.EventViewModelFactory
 import com.example.sainik.R
 import com.example.sainik.databinding.FragmentEventsBinding
 
 
-class EventsFragment : Fragment() {
-    private val mEventViewModel: EventViewModel by viewModels()
+open class EventsFragment : Fragment(){
     private val adapter:EventListAdapter by lazy { EventListAdapter() }
+    private val args by navArgs<EventsFragmentArgs>()
 
+   lateinit var mEventViewModel: EventViewModel
+
+   val currentUserPhoneNumber by lazy {
+        args.currentUserPhoneNumber
+    }
 
     private lateinit var view: FragmentEventsBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
+
+
         // Inflate the layout for this fragment
         view = FragmentEventsBinding.inflate(inflater,container,false)
+
+        mEventViewModel = ViewModelProvider(this, EventViewModelFactory(activity?.application as Application/*,currentUserPhoneNumber*/)).get(EventViewModel::class.java)
 
 
         val recyclerView=view.recyclerView
@@ -33,7 +49,7 @@ class EventsFragment : Fragment() {
         mEventViewModel.getAllEventData.observe(viewLifecycleOwner, Observer { eventdata -> adapter.setData(eventdata) })
 
         view.addFab.setOnClickListener {
-            findNavController().navigate(R.id.action_eventsFragment_to_organizeEventFragment)
+            findNavController().navigate(EventsFragmentDirections.actionEventsFragmentToOrganizeEventFragment(currentUserPhoneNumber))
         }
         setHasOptionsMenu(true)
 
@@ -46,7 +62,8 @@ class EventsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.menu_my_events)
-        findNavController().navigate(R.id.action_eventsFragment_to_myEventsFragment)
+            Toast.makeText(requireContext(),"${currentUserPhoneNumber}",Toast.LENGTH_SHORT).show()
+        findNavController().navigate(EventsFragmentDirections.actionEventsFragmentToMyEventsFragment(currentUserPhoneNumber))
         return super.onOptionsItemSelected(item)
     }
 }
