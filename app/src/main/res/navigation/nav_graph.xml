@@ -125,6 +125,10 @@
         <argument
             android:name="currEventLocation"
             app:argType="string" />
+        <action
+            android:id="@+id/action_eventStatisticsFragment_to_myEventsFragment"
+            app:destination="@id/myEventsFragment"
+            app:popUpTo="@id/eventsFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventDetailsFragment"

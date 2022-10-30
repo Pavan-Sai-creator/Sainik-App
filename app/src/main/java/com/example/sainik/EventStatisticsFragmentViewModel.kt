@@ -32,6 +32,12 @@ class EventStatisticsFragmentViewModel(application: Application,
         }
     }
 
+    fun cancelEvent(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.cancelEvent(currUserNumber,eventTitle,eventLocation)
+        }
+    }
+
 //    fun updateData(eventData: EventData){
 //        viewModelScope.launch(Dispatchers.IO) {
 //            repository.updateMyEventData(eventData)
