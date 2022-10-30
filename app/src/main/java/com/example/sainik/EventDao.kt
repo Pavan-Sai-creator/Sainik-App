@@ -20,4 +20,7 @@ interface EventDao {
     @Query("SELECT * FROM event_details WHERE organiser_number = :curUserNo")
     fun getMyEventsData(curUserNo: String): LiveData<List<EventData>>
 
+    @Query("SELECT * FROM event_details WHERE organiser_number = :curUserNo AND event_title = :currEventTitle AND event_location = :currEventLocation")
+    suspend fun getCurrentEventData(curUserNo: String,currEventTitle:String,currEventLocation:String): EventData
+
 }

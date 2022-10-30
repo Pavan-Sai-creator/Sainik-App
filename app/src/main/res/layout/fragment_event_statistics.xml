@@ -1,14 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="fragments.EventStatisticsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/event_title_heading_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:text="Event Title:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/statistics_my_event_title_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="My Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/event_title_heading_tv"
+        app:layout_constraintTop_toBottomOf="@+id/event_title_heading_tv" />
+
+    <TextView
+        android:id="@+id/event_location_heading_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="Location:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/statistics_my_event_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/statistics_my_event_title_tv" />
+
+    <TextView
+        android:id="@+id/statistics_my_event_location_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:text="Hyderabad"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/event_location_heading_tv"
+        app:layout_constraintTop_toBottomOf="@+id/event_location_heading_tv" />
+
+    <TextView
+        android:id="@+id/event_description_heading_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="Description:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/statistics_my_event_location_tv"
+        app:layout_constraintTop_toBottomOf="@+id/statistics_my_event_location_tv" />
+
+    <TextView
+        android:id="@+id/statistics_my_event_description_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:text="My Event Description"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/event_description_heading_tv"
+        app:layout_constraintTop_toBottomOf="@+id/event_description_heading_tv" />
+
+    <TextView
+        android:id="@+id/number_of_participants_heading_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:text="Number of participants registered:"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/statistics_my_event_description_tv"
+        app:layout_constraintTop_toBottomOf="@+id/statistics_my_event_description_tv" />
+
+    <TextView
+        android:id="@+id/statistics_my_event_number_of_participants_tv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:text="198"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/number_of_participants_heading_tv"
+        app:layout_constraintTop_toBottomOf="@+id/number_of_participants_heading_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

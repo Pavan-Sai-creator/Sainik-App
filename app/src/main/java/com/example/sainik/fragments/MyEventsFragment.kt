@@ -19,11 +19,12 @@ class MyEventsFragment : Fragment() {
 
     lateinit var mMyEventViewModel: MyEventViewModel
     private val args by navArgs<MyEventsFragmentArgs>()
-    private val adapter:MyEventListAdapter by lazy { MyEventListAdapter() }
-
     private val currentUserPhoneNumber by lazy {
         args.currentUserPhoneNumber
     }
+    private val adapter:MyEventListAdapter by lazy { MyEventListAdapter(currentUserPhoneNumber) }
+
+
 
     private lateinit var view:  FragmentMyEventsBinding
     override fun onCreateView(

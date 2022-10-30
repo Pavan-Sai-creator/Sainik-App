@@ -70,6 +70,9 @@
         <argument
             android:name="currentUserPhoneNumber"
             app:argType="string" />
+        <action
+            android:id="@+id/action_myEventsFragment_to_eventStatisticsFragment"
+            app:destination="@id/eventStatisticsFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventAnalysisFragment"
@@ -112,7 +115,17 @@
         android:id="@+id/eventStatisticsFragment"
         android:name="com.example.sainik.fragments.EventStatisticsFragment"
         android:label="fragment_event_statistics"
-        tools:layout="@layout/fragment_event_statistics" />
+        tools:layout="@layout/fragment_event_statistics" >
+        <argument
+            android:name="currUserPhoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="currEventTitle"
+            app:argType="string" />
+        <argument
+            android:name="currEventLocation"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/eventDetailsFragment"
         android:name="com.example.sainik.fragments.EventDetailsFragment"

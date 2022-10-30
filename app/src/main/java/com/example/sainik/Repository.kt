@@ -12,6 +12,8 @@ class Repository(private val userDao: UserDao, private val eventDao: EventDao): 
 
     val getAllEventData: LiveData<List<EventData>> = eventDao.getAllData()
 
+    //val getCurrentEventData: LiveData<EventData> = eventDao.getCurrentEventData()
+
 
 
     suspend fun insertData(userData: UserData){
@@ -25,5 +27,11 @@ class Repository(private val userDao: UserDao, private val eventDao: EventDao): 
     fun getMyEventsData(currUserNumber: String) : LiveData<List<EventData>>{
         return eventDao.getMyEventsData(currUserNumber)
     }
+
+    suspend fun getCurrentEventData(currUserNumber: String,currEventTitle:String,currEventLocation:String): EventData{
+        return eventDao.getCurrentEventData(currUserNumber,currEventTitle,currEventLocation)
+    }
+
+
 
 }
