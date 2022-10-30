@@ -26,4 +26,7 @@ interface EventDao {
     @Query("DELETE FROM event_details WHERE organiser_number = :curUserNo AND event_title = :currEventTitle AND event_location = :currEventLocation")
     suspend fun cancelEvent(curUserNo: String,currEventTitle:String,currEventLocation:String)
 
+    @Query("UPDATE event_details SET number_of_participants = (number_of_participants+1) WHERE organiser_number = :curUserNo AND event_title = :currEventTitle AND event_location = :currEventLocation")
+    suspend fun updateData(curUserNo: String,currEventTitle:String,currEventLocation:String)
+
 }

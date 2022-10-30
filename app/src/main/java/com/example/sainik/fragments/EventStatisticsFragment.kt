@@ -48,7 +48,6 @@ class EventStatisticsFragment : Fragment() {
                 val action = EventStatisticsFragmentDirections.actionEventStatisticsFragmentToMyEventsFragment(currentUserPhoneNumber)
                 findNavController().navigate(action)
             }
-            //Toast.makeText(requireContext(),"Event cancelled",Toast.LENGTH_SHORT).show()
 
         }
 

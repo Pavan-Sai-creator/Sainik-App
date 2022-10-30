@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
+    android:label="fragment_my_events"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.sainik.fragments.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
@@ -23,7 +24,7 @@
         android:id="@+id/registrationFragment"
         android:name="com.example.sainik.fragments.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" >
+        tools:layout="@layout/fragment_registration">
         <action
             android:id="@+id/action_registrationFragment_to_eventsFragment"
             app:destination="@id/eventsFragment"
@@ -37,7 +38,7 @@
         android:id="@+id/eventsFragment"
         android:name="com.example.sainik.fragments.EventsFragment"
         android:label="fragment_events"
-        tools:layout="@layout/fragment_events" >
+        tools:layout="@layout/fragment_events">
         <action
             android:id="@+id/action_eventsFragment_to_organizeEventFragment"
             app:destination="@id/organizeEventFragment"
@@ -48,12 +49,15 @@
         <argument
             android:name="currentUserPhoneNumber"
             app:argType="string" />
+        <action
+            android:id="@+id/action_eventsFragment_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/organizeEventFragment"
         android:name="com.example.sainik.fragments.OrganizeEventFragment"
         android:label="fragment_organize_event"
-        tools:layout="@layout/fragment_organize_event" >
+        tools:layout="@layout/fragment_organize_event">
         <action
             android:id="@+id/action_organizeEventFragment_to_eventAnalysisFragment"
             app:destination="@id/eventAnalysisFragment"
@@ -65,8 +69,8 @@
     <fragment
         android:id="@+id/myEventsFragment"
         android:name="com.example.sainik.fragments.MyEventsFragment"
-        android:label="fragment_my_events"
-        tools:layout="@layout/fragment_my_events" >
+        android:label="Your Events"
+        tools:layout="@layout/fragment_my_events">
         <argument
             android:name="currentUserPhoneNumber"
             app:argType="string" />
@@ -78,7 +82,7 @@
         android:id="@+id/eventAnalysisFragment"
         android:name="com.example.sainik.fragments.EventAnalysisFragment"
         android:label="fragment_event_analysis"
-        tools:layout="@layout/fragment_event_analysis" >
+        tools:layout="@layout/fragment_event_analysis">
         <action
             android:id="@+id/action_eventAnalysisFragment_to_organizeEventFragment"
             app:destination="@id/organizeEventFragment"
@@ -103,8 +107,8 @@
             app:argType="string" />
         <argument
             android:name="numberOfParticipants"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
         <action
             android:id="@+id/action_eventAnalysisFragment_to_eventsFragment"
             app:destination="@id/eventsFragment"
@@ -115,7 +119,7 @@
         android:id="@+id/eventStatisticsFragment"
         android:name="com.example.sainik.fragments.EventStatisticsFragment"
         android:label="fragment_event_statistics"
-        tools:layout="@layout/fragment_event_statistics" >
+        tools:layout="@layout/fragment_event_statistics">
         <argument
             android:name="currUserPhoneNumber"
             app:argType="string" />
@@ -134,5 +138,18 @@
         android:id="@+id/eventDetailsFragment"
         android:name="com.example.sainik.fragments.EventDetailsFragment"
         android:label="fragment_event_details"
-        tools:layout="@layout/fragment_event_details" />
+        tools:layout="@layout/fragment_event_details" >
+        <action
+            android:id="@+id/action_eventDetailsFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment" />
+        <argument
+            android:name="currEventTitle"
+            app:argType="string" />
+        <argument
+            android:name="currEventLocation"
+            app:argType="string" />
+        <argument
+            android:name="currUserPhoneNumber"
+            app:argType="string" />
+    </fragment>
 </navigation>

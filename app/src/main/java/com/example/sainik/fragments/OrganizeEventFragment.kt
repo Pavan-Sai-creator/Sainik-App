@@ -40,7 +40,6 @@ class OrganizeEventFragment : Fragment() {
             if(phonNumberVerified){
                 val verified = verifyEventDataFromUser(mtitle,mlocation,mcapacity,mdescription,morgname,morgnumber)
                 if(verified) {
-                    Toast.makeText(context,mdescription,Toast.LENGTH_LONG).show()
                     val action = OrganizeEventFragmentDirections.actionOrganizeEventFragmentToEventAnalysisFragment(mtitle,mlocation,mcapacity,mdescription,morgname,morgnumber)
                     findNavController().navigate(action)
                 }
