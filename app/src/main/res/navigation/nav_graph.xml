@@ -29,6 +29,9 @@
             app:destination="@id/eventsFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/eventsFragment"
@@ -37,10 +40,14 @@
         tools:layout="@layout/fragment_events" >
         <action
             android:id="@+id/action_eventsFragment_to_organizeEventFragment"
-            app:destination="@id/organizeEventFragment" />
+            app:destination="@id/organizeEventFragment"
+            app:popUpTo="@id/eventsFragment" />
         <action
             android:id="@+id/action_eventsFragment_to_myEventsFragment"
             app:destination="@id/myEventsFragment" />
+        <argument
+            android:name="currentUserPhoneNumber"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/organizeEventFragment"
@@ -49,13 +56,24 @@
         tools:layout="@layout/fragment_organize_event" >
         <action
             android:id="@+id/action_organizeEventFragment_to_eventAnalysisFragment"
-            app:destination="@id/eventAnalysisFragment" />
+            app:destination="@id/eventAnalysisFragment"
+            app:popUpTo="@id/organizeEventFragment" />
+        <argument
+            android:name="currentUserPhoneNumber"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/myEventsFragment"
         android:name="com.example.sainik.fragments.MyEventsFragment"
         android:label="fragment_my_events"
-        tools:layout="@layout/fragment_my_events" />
+        tools:layout="@layout/fragment_my_events" >
+        <argument
+            android:name="currentUserPhoneNumber"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_myEventsFragment_to_eventStatisticsFragment"
+            app:destination="@id/eventStatisticsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/eventAnalysisFragment"
         android:name="com.example.sainik.fragments.EventAnalysisFragment"
@@ -63,10 +81,7 @@
         tools:layout="@layout/fragment_event_analysis" >
         <action
             android:id="@+id/action_eventAnalysisFragment_to_organizeEventFragment"
-            app:destination="@id/organizeEventFragment" />
-        <action
-            android:id="@+id/action_eventAnalysisFragment_to_myEventsFragment"
-            app:destination="@id/myEventsFragment"
+            app:destination="@id/organizeEventFragment"
             app:popUpTo="@id/eventsFragment" />
         <argument
             android:name="eventTitle"
@@ -86,15 +101,34 @@
         <argument
             android:name="organizerNumber"
             app:argType="string" />
+        <argument
+            android:name="numberOfParticipants"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_eventAnalysisFragment_to_eventsFragment"
+            app:destination="@id/eventsFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/eventStatisticsFragment"
-        android:name="com.example.sainik.EventStatisticsFragment"
+        android:name="com.example.sainik.fragments.EventStatisticsFragment"
         android:label="fragment_event_statistics"
-        tools:layout="@layout/fragment_event_statistics" />
+        tools:layout="@layout/fragment_event_statistics" >
+        <argument
+            android:name="currUserPhoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="currEventTitle"
+            app:argType="string" />
+        <argument
+            android:name="currEventLocation"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/eventDetailsFragment"
-        android:name="com.example.sainik.EventDetailsFragment"
+        android:name="com.example.sainik.fragments.EventDetailsFragment"
         android:label="fragment_event_details"
         tools:layout="@layout/fragment_event_details" />
 </navigation>

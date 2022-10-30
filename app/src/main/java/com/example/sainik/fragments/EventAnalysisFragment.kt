@@ -1,5 +1,6 @@
 package com.example.sainik.fragments
 
+import android.app.Application
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.sainik.*
@@ -18,7 +20,7 @@ import com.example.sainik.databinding.FragmentEventsBinding
 class EventAnalysisFragment : Fragment() {
 
     private lateinit var view: FragmentEventAnalysisBinding
-    private val mEventViewModel: EventViewModel by viewModels()
+    lateinit var mEventViewModel: EventViewModel 
     private val args by navArgs<EventAnalysisFragmentArgs>()
 
     override fun onCreateView(
@@ -28,6 +30,8 @@ class EventAnalysisFragment : Fragment() {
 
         view = FragmentEventAnalysisBinding.inflate(inflater,container,false)
         // Inflate the layout for this fragment
+        mEventViewModel = ViewModelProvider(this, EventViewModelFactory(activity?.application as Application/*,"111"*/)).get(EventViewModel::class.java)
+
         view.editEventBtn.setOnClickListener {
             findNavController().navigate(R.id.action_eventAnalysisFragment_to_organizeEventFragment)
         }
@@ -35,8 +39,8 @@ class EventAnalysisFragment : Fragment() {
         view.launchEventBtn.setOnClickListener {
 
             insertEventDataToDb()
-
-            findNavController().navigate(R.id.action_eventAnalysisFragment_to_myEventsFragment)
+            val action = EventAnalysisFragmentDirections.actionEventAnalysisFragmentToEventsFragment(args.organizerNumber)
+            findNavController().navigate(action)
         }
 
         return view.root
@@ -52,10 +56,10 @@ class EventAnalysisFragment : Fragment() {
                 args.eventCapacity,
                 args.eventDescription,
                 args.organizerName,
-                args.organizerNumber
+                args.organizerNumber,
+                args.numberOfParticipants
             )
             mEventViewModel.insertData(newData)
             Toast.makeText(requireContext(),"Successfully added!", Toast.LENGTH_SHORT).show()
-            //findNavController().navigate(R.id.action_eventAnalysisFragment_to_myEventsFragment)
         }
     }
