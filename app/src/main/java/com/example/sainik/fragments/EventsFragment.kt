@@ -62,7 +62,6 @@ open class EventsFragment : Fragment(){
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == R.id.menu_my_events)
-            Toast.makeText(requireContext(),"${currentUserPhoneNumber}",Toast.LENGTH_SHORT).show()
         findNavController().navigate(EventsFragmentDirections.actionEventsFragmentToMyEventsFragment(currentUserPhoneNumber))
         return super.onOptionsItemSelected(item)
     }

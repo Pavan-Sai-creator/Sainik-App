@@ -2,19 +2,18 @@ package com.example.sainik
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EventStatisticsFragmentViewModel(application: Application,
+class EventDetailsViewModel(application: Application,
                                        private val currUserNumber: String,
                                        private val eventTitle: String,
                                        private val eventLocation: String
 ): AndroidViewModel(application) {
     private val eventDao = MyDatabase.getDatabase(application).eventDao()
     private val userDao = MyDatabase.getDatabase(application).userDao()
-     val repository: Repository
+    val repository: Repository
 
     lateinit var getCurrentEventData: EventData
 
@@ -32,16 +31,12 @@ class EventStatisticsFragmentViewModel(application: Application,
         }
     }
 
-    fun cancelEvent(){
+
+    fun updateData(currUserNumber: String,currEventTitle:String,currEventLocation:String){
         viewModelScope.launch(Dispatchers.IO) {
-            repository.cancelEvent(currUserNumber,eventTitle,eventLocation)
+            repository.updateData(currUserNumber,currEventTitle,currEventLocation)
         }
+
     }
 
-//    fun updateData(eventData: EventData){
-//        viewModelScope.launch(Dispatchers.IO) {
-//            repository.updateMyEventData(eventData)
-//        }
-//
-//    }
 }

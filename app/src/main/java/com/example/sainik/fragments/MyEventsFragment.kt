@@ -1,6 +1,7 @@
 package com.example.sainik.fragments
 
 import android.app.Application
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -34,8 +35,6 @@ class MyEventsFragment : Fragment() {
 
         view = FragmentMyEventsBinding.inflate(inflater,container,false)
         // Inflate the layout for this fragment
-
-        Toast.makeText(requireContext(),"Current Number is ${currentUserPhoneNumber}",Toast.LENGTH_SHORT).show()
         mMyEventViewModel = ViewModelProvider(this, MyEventViewModelFactory(activity?.application as Application,currentUserPhoneNumber)).get(MyEventViewModel::class.java)
 
 
@@ -43,7 +42,11 @@ class MyEventsFragment : Fragment() {
         recyclerView.adapter=adapter
         recyclerView.layoutManager= LinearLayoutManager(requireActivity())
 
-        mMyEventViewModel.getMyEventData.observe(viewLifecycleOwner, Observer { myEventdata -> adapter.setData(myEventdata) })
+        mMyEventViewModel.getMyEventData.observe(viewLifecycleOwner, Observer { myEventdata ->
+           if(myEventdata.isEmpty()){
+                view.noEventsCreatedHeadingTv.visibility = View.VISIBLE
+            }
+            adapter.setData(myEventdata) })
 
         return view.root
     }

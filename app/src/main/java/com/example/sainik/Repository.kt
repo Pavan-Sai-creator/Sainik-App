@@ -32,6 +32,14 @@ class Repository(private val userDao: UserDao, private val eventDao: EventDao): 
         return eventDao.getCurrentEventData(currUserNumber,currEventTitle,currEventLocation)
     }
 
+    suspend fun cancelEvent(currUserNumber: String,currEventTitle:String,currEventLocation:String){
+        eventDao.cancelEvent(currUserNumber,currEventTitle,currEventLocation)
+    }
+
+    suspend fun updateData(currUserNumber: String,currEventTitle:String,currEventLocation:String){
+        eventDao.updateData(currUserNumber,currEventTitle,currEventLocation)
+    }
+
 
 
 }

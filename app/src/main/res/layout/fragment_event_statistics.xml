@@ -28,10 +28,10 @@
         android:layout_marginEnd="10dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        tools:text="My Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/event_title_heading_tv"
-        app:layout_constraintTop_toBottomOf="@+id/event_title_heading_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/event_title_heading_tv"
+        tools:text="My Title" />
 
     <TextView
         android:id="@+id/event_location_heading_tv"
@@ -49,13 +49,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        tools:text="Hyderabad"
+        android:layout_marginEnd="10dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/event_location_heading_tv"
-        app:layout_constraintTop_toBottomOf="@+id/event_location_heading_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/event_location_heading_tv"
+        tools:text="Hyderabad" />
 
     <TextView
         android:id="@+id/event_description_heading_tv"
@@ -73,13 +73,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        tools:text="My Event Description"
+        android:layout_marginEnd="10dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/event_description_heading_tv"
-        app:layout_constraintTop_toBottomOf="@+id/event_description_heading_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/event_description_heading_tv"
+        tools:text="My Event Description" />
 
     <TextView
         android:id="@+id/number_of_participants_heading_tv"
@@ -97,12 +97,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        tools:text="198"
+        android:layout_marginEnd="10dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/number_of_participants_heading_tv"
-        app:layout_constraintTop_toBottomOf="@+id/number_of_participants_heading_tv" />
+        app:layout_constraintTop_toBottomOf="@+id/number_of_participants_heading_tv"
+        tools:text="198" />
+
+    <Button
+        android:id="@+id/cancel_event_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="Cancel Event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
