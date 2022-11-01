@@ -26,6 +26,7 @@ class EventDetailsFragment : Fragment() {
     private val currentUserPhoneNumber by lazy { args.currUserPhoneNumber }
     private val currEventTitle by lazy { args.currEventTitle }
     private val currEventLocation by lazy { args.currEventLocation }
+    private val impvariable by lazy {args.impvariable}
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -52,7 +53,7 @@ class EventDetailsFragment : Fragment() {
                 mEventDetailsViewModel.updateData(currentUserPhoneNumber, currEventTitle, currEventLocation)
                 val action =
                     EventDetailsFragmentDirections.actionEventDetailsFragmentToEventsFragment(
-                        currentUserPhoneNumber
+                        impvariable
                     )
                 findNavController().navigate(action)
             }

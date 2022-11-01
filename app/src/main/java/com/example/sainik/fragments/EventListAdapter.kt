@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sainik.EventData
 import com.example.sainik.R
 
-class EventListAdapter: RecyclerView.Adapter<EventListAdapter.MyViewHolder>() {
+class EventListAdapter(private val impvariable: String): RecyclerView.Adapter<EventListAdapter.MyViewHolder>() {
     var eventDataList= emptyList<EventData>()
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){}
 
@@ -30,7 +30,7 @@ class EventListAdapter: RecyclerView.Adapter<EventListAdapter.MyViewHolder>() {
         holder.itemView.findViewById<TextView>(R.id.event_title_txt).text=eventDataList[position].event_title
         holder.itemView.findViewById<TextView>(R.id.event_location_txt).text=eventDataList[position].event_location
         holder.itemView.findViewById<ConstraintLayout>(R.id.event_row_background).setOnClickListener {
-            val action = EventsFragmentDirections.actionEventsFragmentToEventDetailsFragment(eventDataList[position].event_title,eventDataList[position].event_location,eventDataList[position].organiser_number)
+            val action = EventsFragmentDirections.actionEventsFragmentToEventDetailsFragment(eventDataList[position].event_title,eventDataList[position].event_location,eventDataList[position].organiser_number,impvariable)
             holder.itemView.findNavController().navigate(action)
         }
 
