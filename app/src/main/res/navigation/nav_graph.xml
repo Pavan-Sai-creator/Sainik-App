@@ -151,5 +151,8 @@
         <argument
             android:name="currUserPhoneNumber"
             app:argType="string" />
+        <argument
+            android:name="impvariable"
+            app:argType="string" />
     </fragment>
 </navigation>

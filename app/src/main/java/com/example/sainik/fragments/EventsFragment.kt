@@ -21,7 +21,7 @@ import com.example.sainik.databinding.FragmentEventsBinding
 
 
 open class EventsFragment : Fragment(){
-    private val adapter:EventListAdapter by lazy { EventListAdapter() }
+
     private val args by navArgs<EventsFragmentArgs>()
 
    lateinit var mEventViewModel: EventViewModel
@@ -29,12 +29,13 @@ open class EventsFragment : Fragment(){
    val currentUserPhoneNumber by lazy {
         args.currentUserPhoneNumber
     }
+    private val adapter:EventListAdapter by lazy { EventListAdapter(currentUserPhoneNumber) }
 
     private lateinit var view: FragmentEventsBinding
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-
+        //Toast.makeText(requireContext(),"The currently logged in user number is ${currentUserPhoneNumber}",Toast.LENGTH_SHORT).show()
 
         // Inflate the layout for this fragment
         view = FragmentEventsBinding.inflate(inflater,container,false)
