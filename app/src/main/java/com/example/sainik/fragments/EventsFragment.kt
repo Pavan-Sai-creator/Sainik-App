@@ -35,7 +35,7 @@ open class EventsFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-        //Toast.makeText(requireContext(),"The currently logged in user number is ${currentUserPhoneNumber}",Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(),"The currently logged in user number is ${currentUserPhoneNumber}",Toast.LENGTH_SHORT).show()
 
         // Inflate the layout for this fragment
         view = FragmentEventsBinding.inflate(inflater,container,false)

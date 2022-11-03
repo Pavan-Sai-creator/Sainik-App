@@ -22,7 +22,9 @@ class EventAnalysisFragment : Fragment() {
     private lateinit var view: FragmentEventAnalysisBinding
     lateinit var mEventViewModel: EventViewModel 
     private val args by navArgs<EventAnalysisFragmentArgs>()
-
+    val footfall by lazy {
+        args.footfall
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,6 +32,7 @@ class EventAnalysisFragment : Fragment() {
 
         view = FragmentEventAnalysisBinding.inflate(inflater,container,false)
         // Inflate the layout for this fragment
+        view.footfallTv.text=footfall
         mEventViewModel = ViewModelProvider(this, EventViewModelFactory(activity?.application as Application/*,"111"*/)).get(EventViewModel::class.java)
 
         view.editEventBtn.setOnClickListener {
